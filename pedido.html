@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./assets/img/logo-site.png">
+    <title>Namora comigo?</title>
+    <link rel="stylesheet" href="./assets//css/app.css" />
+    <script src="./assets/js/app.js" defer></script>
+  <style>
+    body{
+      background-color: red;
+    }
+
+#yes{
+  height: 40px;
+  width: 70px;
+ background-color: red;
+ color:  white;
+ 
+ 
+
+
+}
+#no{
+  height: 40px;
+  width: 68px;
+ background-color: red;
+ color:  white;
+ 
+ 
+ 
+
+}
+    .painel{
+background-color: white;
+      width: 500px;
+      height: 500px;
+      margin: auto;
+      text-align: center;
+
+    }
+  </style>
+  </head>
+  <body>
+    <div class="painel">
+      
+      <h1> Aceita namorar comigo?</h1>
+      
+      <button class="btn" id="yes">
+        <span class="btn-text-one">Sim</span>
+        <span class="btn-text-two">💕</span>
+      </button>
+      <button class= "btn no" id="no">
+        <span class="btn-text-one">Não</span>
+        <span class="btn-text-two"></span>
+      </button>
+      
+      
+    </div>
+    
+    <div class="background-1"></div>
+    <div class="background-2"></div>
+    <div class="background-3">
+      <div class="cta">
+        
+        
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+  <script>var btn = document.querySelector(".no");
+    var position = 0;
+    var isAnimating = false;
+    
+    btn.addEventListener("click", function() {
+        if (!isAnimating) {
+            isAnimating = true;
+            position = position === 0 ? 150 : 0;
+            btn.style.transform = `translate(0px, ${position}px)`;
+            btn.style.transition = "all 0.2s ease";
+    
+            setTimeout(function() {
+                isAnimating = false;
+            }, 200);
+        }
+    });
+    
+    btn.addEventListener("mouseover", function() {
+        if (!isAnimating) {
+            isAnimating = true;
+            position = position === 0 ? 150 : 0;
+            btn.style.transform = `translate(0px, ${position}px)`;
+            btn.style.transition = "all 0.2s ease";
+    
+            setTimeout(function() {
+                isAnimating = false;
+            }, 200);
+        }
+    });
+    
+    const sim = document.getElementById('yes');
+    
+    sim.addEventListener("click", () => {
+    
+    let timerInterval
+    Swal.fire({
+      title: 'eu te amo manteiguinha ',
+      html: 'Prometo te  fazer feliz a vida toda, te amo meu amor💘',
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading()
+        const b = Swal.getHtmlContainer().querySelector('b')
+        timerInterval = setInterval(() => {
+          b.textContent = Swal.getTimerLeft()
+        }, 100)
+      },
+      willClose: () => {
+        clearInterval(timerInterval)
+      }
+    }).then((result) => {
+      if (result.dismiss === Swal.DismissReason.timer) {
+        console.log('I was closed by the timer')
+      }
+    })
+    });</script>
+</html>
